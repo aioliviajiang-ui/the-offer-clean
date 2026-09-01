@@ -277,8 +277,8 @@ img.scrVid{object-position:center 22%}
 .hcard.hasArt .nm{text-shadow:0 2px 12px #000,0 0 10px #000}
 .hcard.hasArt .fx{background:linear-gradient(180deg,transparent,rgba(8,6,4,.82));border-radius:0;padding:10px 6px 6px;text-shadow:0 1px 6px #000}
 .card-fx,.dcard .card-fx,.hcard .card-fx,.slot .card-fx{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;z-index:0;transform:translateZ(0);backface-visibility:hidden}
-.dcard .card-fx{opacity:0;transition:opacity .25s ease}
-.dcard:hover .card-fx{opacity:1}
+.card-fx{opacity:1;transition:opacity .5s ease}
+.card-fx.fx-done{opacity:0}
 .hcard .nm,.hcard .fx,.hcard .tag,.dcard .dnm,.dcard .dfx,.dcard .dtag,.dcard .dv{z-index:2}
 .hcard{overflow:hidden}
 #appDeath .ov,#appKeeper .ov{background:rgba(5,3,2,.92)}
@@ -481,6 +481,7 @@ body{font-family:"Noto Serif SC","Songti SC",serif}
 .lang-btn.on{border-color:var(--gold2);color:var(--gold2);background:rgba(201,162,94,.12)}
 #hudBar{position:fixed;bottom:12px;left:16px;right:auto;z-index:80;display:none;align-items:center;gap:6px}
 #hudBar .lang-btn{padding:6px 14px;letter-spacing:.22em;font-size:12px;background:rgba(8,6,4,.55)}
+#sndPop[hidden]{display:none!important}
 body.lang-en,body.lang-en button,body.lang-en input{font-family:Cinzel,Unna,"Noto Serif SC",serif}
 body.lang-en .lobbyH,body.lang-en .eName,body.lang-en .it-zh,body.lang-en .tZh{font-family:"Cinzel Decorative",Cinzel,serif}
 #lobbyRules{z-index:8}
@@ -658,21 +659,21 @@ body.lang-en .lobbyH,body.lang-en .eName,body.lang-en .it-zh,body.lang-en .tZh{f
     <div class="jh-knot"></div>
     <div class="seat-cards">
       <button type="button" class="seat-card lit" data-seat="death">
-        <span class="oc-art" style="background-image:url(token-death.jpg)"><video class="oc-vid" src="01-死神.mp4" muted loop playsinline autoplay></video></span>
+        <span class="oc-art" style="background-image:url('final/v206-zips/07-intro-fx/intro/死神入席.jpg')"></span>
         <span class="oc-shade"></span>
         <span class="oc-idx" data-i18n="idx1">壹</span>
         <span class="oc-state drill" data-i18n="drill">对局</span>
-        <span class="oc-meta"><span class="oc-name" data-i18n="seatDeath">死神</span><span class="oc-mech" data-i18n="mechDeath">「案」</span></span>
+        <span class="oc-meta"><span class="oc-name" data-i18n="seatDeath">死神</span><span class="oc-mech" data-i18n="mechDeath">「诺」</span></span>
       </button>
       <button type="button" class="seat-card" data-seat="keeper">
-        <span class="oc-art" style="background-image:url('final/v206-zips/07-intro-fx/intro/藏家入席.jpg')"><video class="oc-vid" src="final/v206-zips/07-intro-fx/intro/藏家入席.mp4" muted loop playsinline autoplay></video></span>
+        <span class="oc-art" style="background-image:url('final/v206-zips/07-intro-fx/intro/藏家入席.jpg')"></span>
         <span class="oc-shade"></span>
         <span class="oc-idx" data-i18n="idx2">贰</span>
         <span class="oc-state drill" data-i18n="drill">对局</span>
-        <span class="oc-meta"><span class="oc-name" data-i18n="seatKeeper">藏家</span><span class="oc-mech" data-i18n="mechKeeper">「长物」</span></span>
+        <span class="oc-meta"><span class="oc-name" data-i18n="seatKeeper">藏家</span><span class="oc-mech" data-i18n="mechKeeper">「遗物」</span></span>
       </button>
     </div>
-    <div class="seat-tagline" id="seatTagline" data-i18n="tagDeath">三夜两胜。舍夜保案。输掉一夜,不等于全盘输掉。</div>
+    <div class="seat-tagline" id="seatTagline" data-i18n="tagDeath">三夜两胜。舍夜保案。输掉一夜,不等于满盘皆输。</div>
     <div class="name-row">
       <span class="name-lab" data-i18n="yourName">你的名字</span>
       <input id="lobbyName" maxlength="12" autocomplete="off" placeholder="……">
@@ -688,8 +689,8 @@ body.lang-en .lobbyH,body.lang-en .eName,body.lang-en .it-zh,body.lang-en .tZh{f
   <div class="ov" id="lobbyRules">
     <div class="big" style="font-size:28px;letter-spacing:.3em" data-i18n="rules">规 则</div>
     <div class="small" style="text-align:left;max-width:560px" data-i18n-html="rulesBody">
-      <b>死神 · 案</b>　三夜两胜。桌上三张牌，双方各选一张。压进案里攒威力，掀案一次性结算。局势不利可以舍夜，保住你的案。<br><br>
-      <b>藏家 · 长物</b>　摆件放在场上发挥效果。刀既能伤人，也能打碎藏品。冷炉明面上积攒火候，点燃才会爆发。刚盖上蒙布的回合，不生效。
+      <b>死神 · 诺</b>　三夜两胜。桌上三张牌，双方各选一张。压进案里攒威力，掀案一次性结算。局势不利可以舍夜，保住你的案。<br><br>
+      <b>藏家 · 遗物</b>　摆件放在场上发挥效果。刀既能伤人，也能打碎藏品。冷炉明面上积攒火候，点燃才会爆发。刚盖上蒙布的回合，不生效。
     </div>
     <div class="dim" data-i18n="tapClose">点击关闭</div>
   </div>
@@ -752,7 +753,7 @@ body.lang-en .lobbyH,body.lang-en .eName,body.lang-en .it-zh,body.lang-en .tZh{f
   <div class="scrArt" data-art="keeperbg"></div>
   <div class="scrVeil"></div>
   <div class="eCol">
-    <div class="eKicker" data-i18n="keeperKicker">THE OFFER · SEAT II · 长物</div>
+    <div class="eKicker" data-i18n="keeperKicker">THE OFFER · SEAT II</div>
     <div class="eName" data-i18n="seatKeeperSp">藏 家</div>
     <div class="eSub">THE COLLECTOR</div>
     <div class="eTag" data-i18n="keeperTag">「我只收藏终将失去的一切。你,也会是件好藏品。」</div>
@@ -957,12 +958,22 @@ window.DeathMotion=function(id){
   var map={za:"砸",dun:"盾",gong:"供",fu:"腐",chu:"处决",liu:"流血"};
   var n=map[id];return n?encodeURI("oli design final/cards/"+n+"/特效.mp4"):"";
 };
-/* 卡牌动画一次即停;悬停死神牌时重放一次 */
+/* 卡牌动画统一规则:亮相播一遍(2倍速,必播完)→淡出露静图;悬停/选中重放一遍 */
+window.__fxInit=function(root){
+  try{
+    (root||document).querySelectorAll("video.card-fx:not([data-fx])").forEach(function(v){
+      v.setAttribute("data-fx","1");
+      v.muted=true;v.playbackRate=2;
+      v.addEventListener("ended",function(){v.classList.add("fx-done");});
+      var p=v.play();if(p&&p.catch)p.catch(function(){});
+    });
+  }catch(e){}
+};
 document.addEventListener("mouseover",function(ev){
-  var card=ev.target&&ev.target.closest&&ev.target.closest(".dcard");
+  var card=ev.target&&ev.target.closest&&ev.target.closest(".dcard,.hcard,.slot");
   if(!card)return;
   var v=card.querySelector("video.card-fx");
-  if(v&&(v.ended||v.paused)){try{v.currentTime=0;v.play();}catch(e){}}
+  if(v&&(v.ended||v.paused)){try{v.classList.remove("fx-done");v.currentTime=0;v.playbackRate=2;v.play();}catch(e){}}
 });
 window.OfferAudioPrefs=(function(){
   function get(k){try{return localStorage.getItem("offer_mute_"+k)==="1";}catch(e){return false;}}
@@ -1020,6 +1031,81 @@ window.OfferVoice=(function(){
     }catch(e){}
   }
   return {play:play,stop:stop};
+})();
+window.OfferEN=(function(){
+  var P=[
+  /* 死神 · 整句 */
+  ["规矩先摆给你。你可以输一更,也可以输一夜。别把每一个现在,全部押给以后。","The rules come first. You may lose a watch; you may lose a night. Don't pawn every now for later."],
+  ["第二夜,加急——压进案的牌,一更抵两更,别攥太久。今夜我只认最重的进攻。","Second night — hurried. Banked cards age double; don't clutch them. Tonight I take only the heaviest attack."],
+  ["最后一夜,血税——相争输家多掉一滴血。今夜我收割:能了结你的,我优先拿。","Last night — blood tax. The clash loser bleeds one more. Tonight I harvest: whatever can end you, I take first."],
+  ["——有人等你?那就快一点。"," — Someone's waiting? Then hurry."],
+  ["——还有事没做完?就在今夜了结。"," — Something undone? End it tonight."],
+  ["——不想死?那就赢我。"," — Don't want to die? Then beat me."],
+  ["到三更了。这一更,定今夜胜负。","Third watch. This one decides the night."],
+  ["舍夜不是认输。只是这一夜不值得。","Yielding isn't losing. This night just isn't worth it."],
+  ["你总把这一更,押给下一更。","You keep pawning this watch for the next."],
+  ["这才叫时机。","Now that is timing."],
+  ["第一夜 · 她把想要的牌先亮出来给你看","NIGHT I · she shows her pick first"],
+  ["第二夜 ·「加急」压案的牌,一更算两更","NIGHT II · RUSH: banked cards age double"],
+  ["第三夜 ·「血税」相争输家额外 −1","NIGHT III · BLOOD TAX: clash loser −1 more"],
+  /* 死神 · 战报框架 */
+  ["夜开始 · "," BEGINS · "],["相争 · 骷髅 ","CLASH · SKULL "],["你赢了","YOU WIN"],["她赢了","SHE WINS"],
+  [" · 各 −1"," · both −1"],[" · 血税−1"," · tax −1"],
+  ["你拿了「","You take 「"],["她拿了「","She takes 「"],["你把「","You: 「"],["她把「","Her: 「"],
+  ["」打出","」 PLAY"],["」压进案","」 BANK"],["」掀案","」 FLIP"],
+  ["这一更过了 · 本夜失血 你 ","Watch over · blood lost YOU "],[" —— 你占上风"," — you lead"],[" —— 她占上风"," — she leads"],[" —— 平"," — even"],
+  ["盾挡下「","Shield blocks 「"],["腐咬盾","Rot bites shield"],["腐·各 −1","Rot · both −1"],["（流血·此后两更各1）"," (bleed · two more watches)"],["−1（流血）","−1 (bleed)"],["（供","(Offering"],
+  ["爆案!「","CASE BURST! 「"],["」两边各 −","」 both −"],["」压太久,化灰","」 held too long — ashes"],
+  ["她按住的那张亮着——点同一张触发相争。","Her pick glows — take the same card to clash."],
+  ["选一张牌。她已经暗中选好了。","Pick a card. She has chosen in secret."],
+  ["她拿走了「","She took 「"],["。从剩下里面再选一张。","」. Pick again from the rest."],
+  ["行规:传家的东西,头两轮不碰。牌收好,换个目标。","House rule: heirlooms untouched for two rounds. Keep the card, pick another."],
+  /* 藏家 · 喊话 */
+  ["炉是冷的。你要点,还是先养着?","The hearth is cold. Light it now — or let it grow?"],
+  ["点燃了。这一口是攒出来的。","Lit. Every bit of that fire was saved up."],
+  ["借我赏玩两轮。","I'll borrow it. Just to admire."],
+  ["……手下留情,那件怕火。","…Gently. That piece fears fire."],
+  ["烧的不是牌,是命。","That's not a card burning. It's a life."],
+  ["可惜了,那件有年头了。","A pity. That piece had years in it."],
+  ["匣子里的东西,不请自动。","Things in boxes go off — when hands come uninvited."],
+  ["看不见的,才最值钱。","What can't be seen is worth the most."],
+  ["炉还烧着。","The hearth still burns."],
+  ["打烊了。灯熄了。还亮着的,加倍烧。","Closing. Lamps out. Whatever still burns, burns double."],
+  ["手艺不行,就别伸手。","No skill — keep your hands home."],
+  ["……她的贼也有失手的时候。","…Even her thief can miss."],
+  ["玻璃柜里的时光,不会老。","Time in a glass case does not age."],
+  ["所有流逝的东西,我都有办法留下。","Everything that slips away, I have ways to keep."],
+  /* 藏家 · 战报框架 */
+  ["急火养不出好东西。炉要当着面养,一轮长两分火候——点燃那一口,烧的全是你攒下的。","Rushed fire makes nothing good. The hearth grows two heat a round in the open — lighting it burns all you saved."],
+  ["打烊。招魂幡这轮烧双份。不见血,灰烬自己来。","Closing. Banners burn double. No blood drawn — the ash comes itself."],
+  ["你摆上「","You place 「"],["她摆上了「","She places 「"],["你蒙上一块红布。","You cover one in red cloth."],
+  ["她往自己场上蒙了一块红布。","She covers something in red cloth."],
+  ["她这轮没出手。","She holds this round."],["她喝了口药。","She drinks the Tonic."],["她点起长明灯。","She lights the Lamp."],["她立起一面盾。","She raises a Shield."],["她要点燃冷炉。","She moves to light her hearth."],
+  ["她掀开自己场上的一块红布——","She lifts her own red cloth —"],["直取你面门。"," goes for your face."],["伸向你的「"," reaches for your 「"],
+  ["骷髅 ","SKULL "],["——贼得手了。","— the Thief succeeds."],["贼失手!空手而回。","the Thief fails — empty-handed."],
+  ["你劈裂了她的「","You crack her 「"],["她劈裂了你的「","She cracks your 「"],["」——还剩 ","」 — "],
+  ["你拆了她的「","You destroy her 「"],["她拆了你的「","She destroys your 「"],
+  ["你偷来她的「","You steal her 「"],["她偷走你的「","She steals your 「"],["」!换主人了。","」! New owner."],
+  ["——连火候一起,爆 ","— heat and all, BURST "],["——连它熬出来的火候一起!","— with all the heat it brewed!"],
+  ["扯开红布拆掉——底下是「"," tears the cloth away — beneath it, 「"],["连布带货偷走——是「"," steals it cloth and all — 「"],["把桌上的「"," palms the 「"],["」摸进了手。","」 into hand."],
+  ["傀儡替藏品挡下那只手。","The Dummy blocks that hand."],["傀儡,碎了。","The Dummy shatters."],["盾挡下那一刀。","A Shield stops the blade."],
+  ["的招魂幡吸走 ","'s Banner drains "],["行规:传家的东西,头两轮不碰。","House rule: heirlooms untouched for two rounds."],
+  ["雷炸了!伸手的人挨 4,这轮的拆/偷作废。","THUNDER! The reaching hand takes 4 — the attempt fails."],
+  ["两袋都空了。打烊。灯熄,幡烧双份,直到有人倒下。","Both bags empty. Closing. Lamps out; banners burn double until one falls."],
+  ["打烊 · 幡又烧了一遍。","CLOSING · the banners burn again."],
+  ["灰烬 ","Ash "],["。谁都不下手,铺子自己来。",". Nobody acts — the shop acts for you."],
+  ["开局换牌:放回「","Mulligan: return 「"],["」,另抽一张。","」, draw another."],["手已满。袋顶「","Hand full. Top card 「"],["」焚弃。","」 burns."],
+  ["你的貔貅翻开她袋顶","Your Pixiu turns her top card "],["她的貔貅从你袋顶翻出","Her Pixiu turns your top card "],["——收下了。","— kept."],["——丢掉了。","— tossed."],
+  /* 牌名(短词,放最后) */
+  ["招魂幡","Banner"],["长明灯","Lamp"],["磨刀石","Whetstone"],["傀儡","Dummy"],["貔貅","Pixiu"],["蒙布","Cloth"],["冷炉","Cold Hearth"],
+  ["大刀","Cleaver"],["处决","Execute"],["流血","Bleed"],["你的","Your "],["她的","Her "],
+  ["第","NIGHT "],["刺","Needle"],["砸","Smash"],["盾","Shield"],["供","Offering"],["腐","Rot"],["刀","Knife"],["药","Tonic"],["贼","Thief"],["雷","Thunder"]
+  ];
+  return function(t){
+    if(window.OfferLang!=="en"||!t||typeof t!=="string")return t;
+    for(var i=0;i<P.length;i++)t=t.split(P[i][0]).join(P[i][1]);
+    return t;
+  };
 })();
 window.OfferCardSfx=(function(){
   var cur=null;
@@ -1126,14 +1212,14 @@ window.KeeperSlotArt=function(f){
     gameTitle:{zh:"死神的游戏",en:"DEATH'S GAME"},
     seatDeath:{zh:"死神",en:"DEATH"},
     seatDeathSp:{zh:"死 神",en:"D E A T H"},
-    mechDeath:{zh:"「案」",en:"CASE"},
+    mechDeath:{zh:"「诺」",en:"「VOW」"},
     seatKeeper:{zh:"藏家",en:"COLLECTOR"},
     seatKeeperSp:{zh:"藏 家",en:"C O L L E C T O R"},
-    mechKeeper:{zh:"「长物」",en:"「POSSESSIONS」"},
+    mechKeeper:{zh:"「遗物」",en:"「RELICS」"},
     drill:{zh:"对局",en:"DUEL"},
     idx1:{zh:"壹",en:"I"},
     idx2:{zh:"贰",en:"II"},
-    tagDeath:{zh:"三夜两胜。舍夜保案。输掉一夜,不等于全盘输掉。",en:"First to two nights. Yield to keep your case. One lost night is not the game."},
+    tagDeath:{zh:"三夜两胜。舍夜保案。输掉一夜,不等于满盘皆输。",en:"First to two nights. Yield to keep your case. One lost night is not the whole game."},
     tagKeeper:{zh:"摆件摆上桌才生效。刀可以砍人,也可以劈器物。冷炉明面攒火候,点燃才爆发。",en:"Relics work once shown. A knife cuts flesh or splits wares. The hearth grows heat in the open\u2014it only bursts when lit."},
     yourName:{zh:"名字,签在这里",en:"SIGN YOUR NAME"},
     whyBack:{zh:"你为什么要回去",en:"WHY GO BACK"},
@@ -1143,7 +1229,7 @@ window.KeeperSlotArt=function(f){
     deal:{zh:"入 局",en:"DEAL"},
     rules:{zh:"规 则",en:"RULES"},
     tapClose:{zh:"点击关闭",en:"TAP TO CLOSE"},
-    rulesBody:{zh:"<b>死神 · 案</b>　三夜两胜。桌上三张牌，双方各选一张。压进案里攒威力，掀案一次性结算。局势不利可以舍夜，保住你的案。<br><br><b>藏家 · 长物</b>　摆件放在场上发挥效果。刀既能伤人，也能打碎藏品。冷炉明面上积攒火候，点燃才会爆发。刚盖上蒙布的回合，不生效。",
+    rulesBody:{zh:"<b>死神 · 诺</b>　三夜两胜。桌上三张牌，双方各选一张。压进案里攒威力，掀案一次性结算。局势不利可以舍夜，保住你的案。<br><br><b>藏家 · 遗物</b>　摆件放在场上发挥效果。刀既能伤人，也能打碎藏品。冷炉明面上积攒火候，点燃才会爆发。刚盖上蒙布的回合，不生效。",
               en:"<b>DEATH · CASE</b>　First to two nights. Three cards. Each takes one. Banked cards grow; flipping them pays. Yield keeps your case.<br><br><b>KEEPER · RELICS</b>　Relics stay on the table and work. Knives cut blood or goods. The cold hearth grows in the open; lighting it detonates. Fresh cloth does nothing that round."},
     pro0:{zh:"「你已经死了。」",en:"“You're already dead.”"},
     pro1:{zh:"「想回去,尚有机会。」",en:"“Want to go back? There is still a way.”"},
@@ -1160,7 +1246,7 @@ window.KeeperSlotArt=function(f){
     br3:{zh:"藏家:「赢了,带一件走。输了——我把你留下。」",en:"Keeper: “Win, take one with you. Lose—I keep you.”"},
     br4:{zh:"藏家:「得失由人,留存由我。」",en:"Keeper: “Gain and loss are yours. Keeping is mine.”"},
     brGo:{zh:"去 她 的 铺 子",en:"TO HER SHOP"},
-    keeperKicker:{zh:"THE OFFER · SEAT II · 长物",en:"THE OFFER · SEAT II · RELICS"},
+    keeperKicker:{zh:"THE OFFER · SEAT II",en:"THE OFFER · SEAT II"},
     keeperTag:{zh:"「我只收藏终将失去的一切。你,也会是件好藏品。」",en:"“I collect only what is bound to be lost. You, too, would make a fine piece.”"},
     keeperRule:{zh:"「我这儿的东西,不脱手。你打出的摆件留在桌上——活着,有身子,替你干活。」<br>「袋空了,我就打烊。灯熄,幡烧双份。谁都不肯动手?灰烬替你们动。」",
                en:"“Nothing here leaves my hand. Relics you play stay on the table—alive, with a body, working for you.”<br>“Bags empty, I close. Lamps die. Banners burn double. Nobody acts? The ash will.”"},
@@ -2048,10 +2134,10 @@ DGame.prototype.clash=function(uid){
   g.rec.clashes++;
   var extra=g.law()==="blood"?1:0;
   g.you.hp-=1;g.her.hp-=1;
-  var die=1+Math.floor(g.rng()*6);
-  var holderWins=die<=4;
+  var holderWins=g.rng()<0.6; /* 持印者六成胜 */
   var youHold=g.seal==="you";
   var youWin=youHold?holderWins:!holderWins;
+  var die=(youWin?[1,3,5]:[2,4,6])[Math.floor(g.rng()*3)];
   if(youWin)g.rec.clashesWon++;
   var loser=youWin?"her":"you";
   if(extra)g[loser].hp-=extra;
@@ -2228,10 +2314,11 @@ function setBar(fillId,ghostId,pct){
   }
 }
 function ticker(line){
+  if(window.OfferEN)line=OfferEN(line);
   tick1=tick2;tick2=line;
   $("dTick").innerHTML='<div class="old">'+tick1+'</div><div>'+tick2+'</div>';
 }
-function dBark(t){$("dBark").textContent=t||"";}
+function dBark(t){$("dBark").textContent=(window.OfferEN?OfferEN(t||""):(t||""));}
 function caseHtml(side){
   var o=G[side],h="";
   for(var i=0;i<DCFG.caseCap;i++){
@@ -2258,7 +2345,7 @@ function tableHtml(pickable,excludeUid){
     var v=d.base?('<div class="dv">'+d.base+'</div>'):'';
     var bg=window.OfferArt?window.OfferArt("card_"+c.id):"";
     if(bg)cls+=" hasArt";
-    var mot=(pickable||cls.indexOf("herPick")>=0)&&(window.DeathMotion?window.DeathMotion(c.id):"");
+    var mot=window.DeathMotion?window.DeathMotion(c.id):"";
     return '<div class="'+cls+'" data-duid="'+c.uid+'" title="'+(d.full||d.fx)+'"'+(bg?' style="background-image:url('+bg+');background-size:cover;background-position:center"':'')+'>'+
       (mot?'<video class="card-fx" src="'+mot+'" muted playsinline autoplay></video>':'')+
       '<div class="dtag">'+d.cls+'</div>'+v+
@@ -2298,7 +2385,9 @@ function render(){
   $("dYouCase").innerHTML=caseHtml("you");
   var netY=G.nightStart.you-G.you.hp, netH=G.nightStart.her-G.her.hp;
   $("dNet").textContent=window.t?window.t("netLoss",{y:netY,h:netH}):("本夜失血 你 "+netY+" · 她 "+netH+"（失血更少者夺夜）");
-  $("dTable").innerHTML=tableHtml(phase==="pick"||phase==="repick",phase==="repick"?cur.herTookUid:null);
+  var _th=tableHtml(phase==="pick"||phase==="repick",phase==="repick"?cur.herTookUid:null);
+  if(window.__lastTableHtml!==_th){$("dTable").innerHTML=_th;window.__lastTableHtml=_th;}
+  if(window.__fxInit)window.__fxInit($("dTable"));
   var ar="",hint="";
   if(phase==="pick")hint=G.night===1?"她按住的那张亮着——点同一张触发相争。":"选一张牌。她已经暗中选好了。";
   if(phase==="repick"){hint="她拿走了「"+nmD(cur.herTookId)+"」。从剩下里面再选一张。";}
@@ -2351,7 +2440,7 @@ async function pump(){
       var face=e.die||1;
       await (window.playSkullDie?window.playSkullDie({
         face:face, youWin:e.youWin,
-        sub:"各 −1"+(e.extra?" · 血税:输家额外−1":"")+" · 金印易手"
+        sub:"各 −1"+(e.extra?" · 血税:输家额外−1":"")+" · 金印易手 · 持印六成胜"
       }):sleep(900));
       ticker("相争 · 骷髅 "+face+" · "+(e.youWin?"你赢了":"她赢了")+" · 各 −1"+(e.extra?" · 血税−1":""));
       render();
@@ -2601,7 +2690,7 @@ function playSlotCloth(who,kind,slotIdx){
   return Promise.resolve();
 }
 function playSlotCover(who,ms){return playSlotCloth(who,"cover");}
-function bark(t){if(!t)return;$("bark").textContent="「"+t+"」";
+function bark(t){if(!t)return;$("bark").textContent="「"+(window.OfferEN?OfferEN(t):t)+"」";
   try{
     var VB=window.__voiceBark||(window.__voiceBark={init:0});
     if(!VB.init){VB.init=1;VB.m={};VB.m[BARKS.open]="voice_k_open";VB.m[BARKS.ignite]="voice_k_ignite";VB.m[BARKS.steal]="voice_k_steal";VB.m[BARKS.stolen]="voice_k_stolen";VB.m[BARKS.burn]="voice_k_burn";VB.m[BARKS.myBurn]="voice_k_myburn";VB.m[BARKS.lei]="voice_k_lei";VB.m[BARKS.cover]="voice_k_cover";VB.m[BARKS.fan]="voice_k_fan";VB.m[BARKS.close]="voice_k_close";}
@@ -2609,7 +2698,7 @@ function bark(t){if(!t)return;$("bark").textContent="「"+t+"」";
     if(VB.m[t]&&window.OfferVoice)OfferVoice.play(VB.m[t]);
   }catch(e){}}
 function nmOf(e){return e.nm||(CARDS[e.id]?CARDS[e.id].n:e.id);}
-function log(t){logLines.unshift(t);logLines=logLines.slice(0,2);
+function log(t){if(window.OfferEN)t=OfferEN(t);logLines.unshift(t);logLines=logLines.slice(0,2);
   $("log").innerHTML=logLines.map(function(x,i){return '<div class="'+(i===0?"new":"old")+'" style="'+(i===0?"":"opacity:.45;font-size:12.5px")+'">'+x+'</div>';}).join("");}
 function floatDmg(txt,who,healQ){
   var el=document.createElement("div");el.className="float"+(healQ?" heal":"");el.textContent=txt;
@@ -2719,7 +2808,7 @@ function render(){
     var c=CARDS[id];
     var hart=window.KeeperArt&&window.KeeperArt(id);
     var on=sel&&sel.kind==="hand"&&sel.idx===i;
-    var mot=on&&window.KeeperMotion?window.KeeperMotion(id):"";
+    var mot=window.KeeperMotion?window.KeeperMotion(id):"";
     return '<div class="hcard'+(on?" sel":"")+(hart?" hasArt":"")+'" data-h="'+i+'" data-id="'+id+'"'+(hart?' style="background-image:url('+hart+');background-size:cover;background-position:center"':'')+'>'+(mot?'<video class="card-fx" src="'+mot+'" muted playsinline autoplay></video>':'')+'<div class="tag" style="position:absolute;top:3px;left:6px;z-index:2;font-size:10px;color:var(--dim)">'+(c.cls||"")+'</div><div class="nm">'+(window.t?window.t("card_"+id):c.n)+'</div><div class="fx">'+shortFx(id)+'</div></div>';
   }));
   var ar="",hint="";
@@ -2802,6 +2891,7 @@ function render(){
   }
   $("actionRow").innerHTML=ar;
   $("hintRow").textContent=hint;
+  if(window.__fxInit)window.__fxInit(document.getElementById("appKeeper"));
 }
 var T={steal:0,stolen:0,boom:0,burstMax:0,crack:0};
 function setHerPlay(nm,fx,clothQ){
@@ -3044,8 +3134,12 @@ document.addEventListener("click",function(ev){
   var slot=t.closest('.slot[data-side]');
   if(slot){
     var side=slot.getAttribute("data-side"), si=+slot.getAttribute("data-slot");
-    if(side==="E"&&(mode==="daoItem")){ if(G.E.field[si])submit({act:"play",id:G.P.hand[sel.idx],tgt:{slot:si,uid:G.E.field[si].uid}}); return; }
-    if(side==="E"&&(mode==="zeiItem")){ if(G.E.field[si])submit({act:"play",id:"zei",tgt:{slot:si,uid:G.E.field[si].uid}}); return; }
+    function _heirGuard(f){
+      if(f&&f.heir&&G.round<=2){$("hintRow").textContent="行规:传家的东西,头两轮不碰。牌收好,换个目标。";return true;}
+      return false;
+    }
+    if(side==="E"&&(mode==="daoItem")){ var _f1=G.E.field[si]; if(_f1){if(_heirGuard(_f1))return; submit({act:"play",id:G.P.hand[sel.idx],tgt:{slot:si,uid:_f1.uid}});} return; }
+    if(side==="E"&&(mode==="zeiItem")){ var _f2=G.E.field[si]; if(_f2){if(_heirGuard(_f2))return; submit({act:"play",id:"zei",tgt:{slot:si,uid:_f2.uid}});} return; }
     if(side==="E"&&(mode==="riseDao")){ if(G.E.field[si])submit({act:"rise",slot:sel.slot,tgt:{slot:si,uid:G.E.field[si].uid}}); return; }
     if(side==="E"&&(mode==="riseZei")){ if(G.E.field[si])submit({act:"rise",slot:sel.slot,tgt:{slot:si,uid:G.E.field[si].uid}}); return; }
     if(side==="P"&&mode==="replace"){
@@ -3230,7 +3324,7 @@ document.querySelectorAll(".eVerbs .vchip").forEach(function(chip){
 });
 /* —— 大厅选席 —— */
 var selectedSeat="death";
-var SEAT_TAG={death:"三夜两胜。舍夜保案。输掉一夜,不等于全盘输掉。",keeper:"摆件摆上桌才生效。刀可以砍人,也可以劈器物。冷炉明面攒火候,点燃才爆发。"};
+var SEAT_TAG={death:"三夜两胜。舍夜保案。输掉一夜,不等于满盘皆输。",keeper:"摆件摆上桌才生效。刀可以砍人,也可以劈器物。冷炉明面攒火候,点燃才爆发。"};
 var SEAT_BG={death:"01-死神.mp4",keeper:"final/v206-zips/keeper-inspect.mp4"};
 document.querySelectorAll(".seat-card").forEach(function(card){
   card.addEventListener("click",function(ev){
@@ -3338,7 +3432,7 @@ function keeperJudge(k){
          dadao:"他带走了那把大刀。",zei:"他把贼收作了自己的人。",yao:"他带走了药。",lei:"他带走了雷——他把愤怒也收着。"};
   var lines=[];
   if(!k)return lines;
-  if(k.carried&&k.carried.length)k.carried.forEach(function(id){lines.push(m[id]||"他带走了一件长物。");});
+  if(k.carried&&k.carried.length)k.carried.forEach(function(id){lines.push(m[id]||"他带走了一件遗物。");});
   else lines.push("他什么都没带——他不用东西证明自己。");
   if(k.leftName)lines.push("他把「"+campaign.playerName+"」这个名字,留在了她的铺子里。");
   return lines;
@@ -3488,7 +3582,7 @@ else if(q.get("seat")==="death"){campaign.playerName="试玩者";campaign.reason
   var lines=[[0.04,"「你已经死了。」"],[0.30,"「想回去,尚有机会。」"],[0.58,"「闯过两场对局,每一个抉择都算数。」"],[0.84,"「规矩,马上给你看。」"]];
   var shown=-1,dead=false;
   function off(){cap.classList.remove("on");}
-  function titleUp(){var g=document.getElementById("introGate");return !!(g&&g.offsetParent);}
+  function titleUp(){return !ov.classList.contains("phase-video");} /* 只在正片阶段出字幕 */
   if(vid){
     vid.addEventListener("timeupdate",function(){
       if(dead||!vid.duration)return;
