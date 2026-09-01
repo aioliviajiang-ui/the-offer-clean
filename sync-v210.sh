@@ -19,11 +19,14 @@ import re, os, sys
 
 html = open('index.html', 'r', encoding='utf-8', errors='ignore').read()
 
-# 收集 HTML 中引用的本地文件
+# 收集 HTML 中引用的本地文件（属性 + JS 字符串）
 refs = set()
 refs.update(re.findall(r'url\(["\']?([^"\')]+)["\']?\)', html))
 refs.update(re.findall(r'src=["\']([^"\']+)["\']', html))
 refs.update(re.findall(r'href=["\']([^"\']+)["\']', html))
+# 也捕捉 JS 里的 "path/to/file.m4a"、'path/to/file.mp3' 等
+refs.update(re.findall(r'"([^"]+\.(?:png|jpg|jpeg|webp|gif|svg|mp4|webm|mov|mp3|wav|ogg|m4a))"', html, re.I))
+refs.update(re.findall(r"'([^']+\.(?:png|jpg|jpeg|webp|gif|svg|mp4|webm|mov|mp3|wav|ogg|m4a))'", html, re.I))
 
 # 只检查真实媒体文件路径，过滤 JS 代码片段
 MEDIA_EXTS = ('.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg',
@@ -44,14 +47,33 @@ def is_real_path(r):
         return False
     return True
 
+# 预扫描仓库里所有媒体文件，按文件名索引
+media_files = {}
+for root, dirs, files in os.walk('.'):
+    if root.startswith('./.git') or root.startswith('./.wrangler'):
+        continue
+    for f in files:
+        if f.lower().endswith(MEDIA_EXTS):
+            full = os.path.join(root, f).lstrip('./')
+            media_files.setdefault(f, []).append(full)
+
 missing = []
 for r in refs:
     if not is_real_path(r):
         continue
     # 去掉可能的 URL hash/query
     r = r.split('?')[0].split('#')[0]
-    if not os.path.exists(r):
-        missing.append(r)
+    # URL decode
+    from urllib.parse import unquote
+    r = unquote(r)
+    # 如果路径存在，OK
+    if os.path.exists(r):
+        continue
+    # 如果是裸文件名，在仓库里找同名文件
+    basename = os.path.basename(r)
+    if basename in media_files:
+        continue
+    missing.append(r)
 
 if missing:
     print("❌ 以下素材缺失，请补齐后再部署：")

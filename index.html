@@ -727,7 +727,7 @@ body.lang-en .lobbyH,body.lang-en .eName,body.lang-en .it-zh,body.lang-en .tZh{f
     <div class="eRule" data-i18n-html="deathRule">「三夜。你赢两夜,门就开。」<br>
     「一夜三更。桌上三张牌,你一张,我一张。看上同一张,就相争——各见一滴血,骷髅说话;金印在谁手里,骰子就偏向谁。」<br>
     「谁一夜里失的血少,夜就归谁。倒下的,下一夜以十阳寿起来——我要的是完整的三夜。」</div>
-    <div class="eLead" data-i18n="deathLead">「这三字,是你赌桌上仅存的前路。看清,再入席。」</div>
+    <div class="eLead" data-i18n="deathLead">「下面三个词,是你在这张桌上能做的所有事。点开,看懂,再坐。」</div>
     <div class="eVerbs" data-vpage="death"><span class="vchip" data-v="ya" data-i18n="vYa">压</span><span class="vchip" data-v="xian" data-i18n="vXian">掀</span><span class="vchip" data-v="ren" data-i18n="vRen">舍夜</span></div>
     <div class="vDetail" id="deathVerbDetail" hidden></div>
     <button class="act big eGo" id="deathGo" data-i18n="sitDeath">入 席</button>
@@ -1235,9 +1235,9 @@ window.KeeperSlotArt=function(f){
     pro1:{zh:"「想回去,尚有机会。」",en:"“Want to go back? There is still a way.”"},
     pro2:{zh:"「闯过两场对局,输赢无关紧要——但你的每一个抉择,都算数。」",en:"“Two tables stand between you and home. Win or lose—every choice counts.”"},
     deathTag:{zh:"「规矩予我什么,我便取什么。」",en:"“What the rules grant me, I take.”"},
-    deathRule:{zh:"「三夜之局。你赢下两夜,门便开启。」<br>「一夜三更。桌上三张牌,你持一张,我执一张。若同择一张,便是相争——各淌一滴血,骷髅出声。金印落于谁手,骰子便偏袒谁。」<br>「一夜终了,失血更少者,得此夜。落败倒下之人,下一夜耗十阳寿复生。我所求,是完整的三夜。」",
+    deathRule:{zh:"「三夜。你赢两夜,就能回去。」<br>「一夜三更。桌上三张牌,你拿一张,我拿一张。选了同一张就相争——各掉 1 血,掷骷髅定输赢;金印在谁手里,骰子就偏向谁,六成。」<br>「一夜打完,谁掉的血少,这一夜就归谁。倒下的人,下一夜满 10 血站起来——我要的是完整的三夜。」",
               en:"“Three nights. Win two, the door opens.”<br>“Three rounds a night. Three cards. You take one, I take one. Same card is a clash—both bleed, the skull speaks; whoever holds the seal tilts the die.”<br>“The night goes to whoever lost less blood. The fallen rise next night with ten—I want all three nights intact.”"},
-    deathLead:{zh:"「这三字,是你赌桌上仅存的前路。看清,再入席。」",en:"“These three words are every road on my table. Open them before you sit.”"},
+    deathLead:{zh:"「下面三个词,是你在这张桌上能做的所有事。点开,看懂,再坐。」",en:"“These three words are every road on my table. Open them before you sit.”"},
     vYa:{zh:"压",en:"BANK"}, vXian:{zh:"掀",en:"FLIP"}, vRen:{zh:"舍夜",en:"YIELD"},
     sitDeath:{zh:"入 席",en:"SIT"},
     br0:{zh:"死神:「你还会选择。」",en:"Death: “You still get to choose.”"},
@@ -1299,11 +1299,11 @@ window.KeeperSlotArt=function(f){
   };
   var VERB={
     death:{
-      ya:{zh:"「压。到手之牌,不必即刻打出,可封存于案中。每过一更,牌力便增益一分,上限为二。若拖至第四更仍不掀开,牌便会在案中炸裂,你我皆要承受反噬。欲求来日,必先赌上当下。」",
+      ya:{zh:"「压。拿到的牌可以不打,压进案里存着。每过一更长 1 点,最多长 2。压到第四更还不掀,它在案里炸开,你我一起挨。想要以后更大,就先忍住现在。」",
           en:"“Bank. Don't play it—put it in your case. Each round it grows, up to +2. Sit a fourth and it bursts on both of us. Want later, pay now.”"},
-      xian:{zh:"「掀。案中封存之牌,连同你手中这张,尽数翻落赌桌。养足牌力再掀,一便可定乾坤;掀之过早,心血尽废;掀之过晚,反噬临身。切记——相争夺来的杀牌,一经掀出,纵有盾护,亦无从抵挡。」",
+      xian:{zh:"「掀。案里存的牌,连同你手上这张,一次全打出来。养肥了掀,一更翻盘;掀早了白养,掀晚了炸自己。记住——相争抢来的砸,掀出去,盾也挡不住。」",
             en:"“Flip. Everything in the case, plus this card, hits the table at once. Grow it, then flip; flip early and you wasted it; late and it blows on you. A Smash won in a clash—shields don't stop it.”"},
-      ren:{zh:"「舍夜。若是此夜无力相争,便将今夜归予我。你的案台为你保留,下一夜,你以八点阳寿重归局中,金印亦交你执掌。舍夜,并非俯首认输——只是看清,这一夜,不值得耗尽你的来日。」",
+      ren:{zh:"「舍夜。这一夜打不过,就让给我。你的案原样保留,下一夜你至少 8 血起身,金印也归你握。舍夜不是认输——是这一夜,不值得把你的以后全填进去。」",
            en:"“Yield. A night you can't win, give it to me. Your case stays. Next night you rise with at least eight and the seal. Yielding is not losing—it's admitting this night isn't worth your later.”"}
     },
     keeper:{
@@ -3285,9 +3285,9 @@ function seqLines(container,delay,done){
 /* —— 动词章:点开听她讲细则 —— */
 var VERB_TEXT={
   death:{
-    ya:"「压。到手之牌,不必即刻打出,可封存于案中。每过一更,牌力便增益一分,上限为二。若拖至第四更仍不掀开,牌便会在案中炸裂,你我皆要承受反噬。欲求来日,必先赌上当下。」",
-    xian:"「掀。案中封存之牌,连同你手中这张,尽数翻落赌桌。养足牌力再掀,一便可定乾坤;掀之过早,心血尽废;掀之过晚,反噬临身。切记——相争夺来的杀牌,一经掀出,纵有盾护,亦无从抵挡。」",
-    ren:"「舍夜。若是此夜无力相争,便将今夜归予我。你的案台为你保留,下一夜,你以八点阳寿重归局中,金印亦交你执掌。舍夜,并非俯首认输——只是看清,这一夜,不值得耗尽你的来日。」"
+    ya:"「压。拿到的牌可以不打,压进案里存着。每过一更长 1 点,最多长 2。压到第四更还不掀,它在案里炸开,你我一起挨。想要以后更大,就先忍住现在。」",
+    xian:"「掀。案里存的牌,连同你手上这张,一次全打出来。养肥了掀,一更翻盘;掀早了白养,掀晚了炸自己。记住——相争抢来的砸,掀出去,盾也挡不住。」",
+    ren:"「舍夜。这一夜打不过,就让给我。你的案原样保留,下一夜你至少 8 血起身,金印也归你握。舍夜不是认输——是这一夜,不值得把你的以后全填进去。」"
   },
   keeper:{
     bai:"「摆。看上的就摆出来,占一格,每一轮替你干活。看上更好的,随时可以烧一件旧的换它上架——这叫换展。也可以蒙布盖着摆:布底下的东西我看不见。只是刚盖的布未干,那一轮,不作数。」",
