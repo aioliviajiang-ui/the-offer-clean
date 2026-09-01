@@ -357,6 +357,17 @@ body{font-family:"Noto Serif SC","Songti SC",serif}
   #appDeath .hpnum{font-size:32px}
   .dAside .obj-val{font-size:40px}
 }
+/* v210 死神桌贴框缩放 */
+#dFelt{--dk:1}
+#dFelt #dBark{font-size:calc(15px*var(--dk))!important;line-height:1.65;max-width:76%}
+#dFelt #dTick{font-size:calc(12px*var(--dk))!important;min-height:calc(26px*var(--dk))}
+#dFelt #dNet{font-size:calc(12.5px*var(--dk))!important}
+#dFelt .dcard{width:calc(130px*var(--dk))!important;height:calc(184px*var(--dk))!important;padding-top:calc(12px*var(--dk))}
+#dFelt .dcard .dnm{font-size:calc(20px*var(--dk))!important;top:calc(9px*var(--dk));left:calc(11px*var(--dk))}
+#dFelt .dcard .dv{font-size:calc(19px*var(--dk))!important}
+#dFelt .dcard .dfx{font-size:calc(11px*var(--dk))!important;bottom:calc(8px*var(--dk))}
+#dFelt .dcard .dtag{font-size:calc(10px*var(--dk))!important}
+#dFelt #dTable{min-height:calc(184px*var(--dk))!important;gap:calc(14px*var(--dk))!important}
 /* 相争骷髅 —— 老版骰子：转动.mp4 落地切 你-135 / 她-246，底下写你赢了/她赢了 */
 #dSkullOv{position:fixed!important;inset:0;z-index:80;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(4,2,1,.82)!important;opacity:0;pointer-events:none;transition:opacity .25s}
 #dSkullOv.show{opacity:1;pointer-events:auto}
@@ -1035,8 +1046,8 @@ window.OfferVoice=(function(){
 window.OfferEN=(function(){
   var P=[
   /* 死神 · 整句 */
-  ["规矩先摆给你。你可以输一更,也可以输一夜。别把每一个现在,全部押给以后。","The rules come first. You may lose a watch; you may lose a night. Don't pawn every now for later."],
-  ["第二夜,加急——压进案的牌,一更抵两更,别攥太久。今夜我只认最重的进攻。","Second night — hurried. Banked cards age double; don't clutch them. Tonight I take only the heaviest attack."],
+  ["规矩先摆给你。一更可输,一夜也可输。只别把每个现在,全押给以后。","The rules come first. You may lose a watch; you may lose a night. Don't pawn every now for later."],
+  ["第二夜,加急——案里的牌,一更老两更。今夜我只取最重的攻。","Second night — hurried. Banked cards age double; don't clutch them. Tonight I take only the heaviest attack."],
   ["最后一夜,血税——相争输家多掉一滴血。今夜我收割:能了结你的,我优先拿。","Last night — blood tax. The clash loser bleeds one more. Tonight I harvest: whatever can end you, I take first."],
   ["——有人等你?那就快一点。"," — Someone's waiting? Then hurry."],
   ["——还有事没做完?就在今夜了结。"," — Something undone? End it tonight."],
@@ -1049,11 +1060,11 @@ window.OfferEN=(function(){
   ["第二夜 ·「加急」压案的牌,一更算两更","NIGHT II · RUSH: banked cards age double"],
   ["第三夜 ·「血税」相争输家额外 −1","NIGHT III · BLOOD TAX: clash loser −1 more"],
   /* 死神 · 战报框架 */
-  ["夜开始 · "," BEGINS · "],["相争 · 骷髅 ","CLASH · SKULL "],["你赢了","YOU WIN"],["她赢了","SHE WINS"],
+  ["相争 · 骷髅 ","CLASH · SKULL "],["你赢了","YOU WIN"],["她赢了","SHE WINS"],
   [" · 各 −1"," · both −1"],[" · 血税−1"," · tax −1"],
   ["你拿了「","You take 「"],["她拿了「","She takes 「"],["你把「","You: 「"],["她把「","Her: 「"],
   ["」打出","」 PLAY"],["」压进案","」 BANK"],["」掀案","」 FLIP"],
-  ["这一更过了 · 本夜失血 你 ","Watch over · blood lost YOU "],[" —— 你占上风"," — you lead"],[" —— 她占上风"," — she leads"],[" —— 平"," — even"],
+  ["这一更结束 · 本夜失血 你 ","Watch over · blood lost YOU "],[" —— 你占上风"," — you lead"],[" —— 她占上风"," — she leads"],[" —— 势均力敌"," — even"],
   ["盾挡下「","Shield blocks 「"],["腐咬盾","Rot bites shield"],["腐·各 −1","Rot · both −1"],["（流血·此后两更各1）"," (bleed · two more watches)"],["−1（流血）","−1 (bleed)"],["（供","(Offering"],
   ["爆案!「","CASE BURST! 「"],["」两边各 −","」 both −"],["」压太久,化灰","」 held too long — ashes"],
   ["她按住的那张亮着——点同一张触发相争。","Her pick glows — take the same card to clash."],
@@ -1274,7 +1285,7 @@ window.KeeperSlotArt=function(f){
     goldSealHer:{zh:"金印·她",en:"SEAL · HER"},
     score:{zh:"你 {y} 夜 · 两胜 · {h} 她",en:"YOU {y} · FIRST TO 2 · {h} HER"},
     nightRound:{zh:"第{n}夜 · {p}",en:"NIGHT {n} · {p}"},
-    netLoss:{zh:"本夜失血 你 {y} · 她 {h}（失血更少者夺夜）",en:"BLOOD LOST  YOU {y} · HER {h}  (less takes the night)"},
+    netLoss:{zh:"本夜失血 你 {y} · 她 {h} · 谁掉血少,这夜归谁",en:"BLOOD LOST  YOU {y} · HER {h}  (less takes the night)"},
     playBtn:{zh:"打出",en:"PLAY"},
     bankBtn:{zh:"压进案",en:"BANK"},
     flipBtn:{zh:"掀案",en:"FLIP"},
@@ -2384,7 +2395,7 @@ function render(){
   $("dHerCase").innerHTML=caseHtml("her");
   $("dYouCase").innerHTML=caseHtml("you");
   var netY=G.nightStart.you-G.you.hp, netH=G.nightStart.her-G.her.hp;
-  $("dNet").textContent=window.t?window.t("netLoss",{y:netY,h:netH}):("本夜失血 你 "+netY+" · 她 "+netH+"（失血更少者夺夜）");
+  $("dNet").textContent=window.t?window.t("netLoss",{y:netY,h:netH}):("本夜失血 你 "+netY+" · 她 "+netH+" · 谁掉血少,这夜归谁");
   var _th=tableHtml(phase==="pick"||phase==="repick",phase==="repick"?cur.herTookUid:null);
   if(window.__lastTableHtml!==_th){$("dTable").innerHTML=_th;window.__lastTableHtml=_th;}
   if(window.__fxInit)window.__fxInit($("dTable"));
@@ -2428,11 +2439,11 @@ async function pump(){
     var e=evs[i];
     if(e.t==="night"){
       phase="pick";cur=null;render();
-      dBark(e.n===1?"规矩先摆给你。你可以输一更,也可以输一夜。别把每一个现在,全部押给以后。":
-            e.n===2?"第二夜,加急——压进案的牌,一更抵两更,别攥太久。今夜我只认最重的进攻。":
+      dBark(e.n===1?"规矩先摆给你。一更可输,一夜也可输。只别把每个现在,全押给以后。":
+            e.n===2?"第二夜,加急——案里的牌,一更老两更。今夜我只取最重的攻。":
             "最后一夜,血税——相争输家多掉一滴血。今夜我收割:能了结你的,我优先拿。"+({waiting:"——有人等你?那就快一点。",unfinished:"——还有事没做完?就在今夜了结。",refuse:"——不想死?那就赢我。"}[window.OfferReason]||""));
       if(window.OfferVoice)OfferVoice.play("voice_d_night"+Math.min(e.n,3),{then:(e.n>=3&&window.OfferReason?("voice_d_echo_"+window.OfferReason):null)});
-      ticker("第"+e.n+"夜开始 · "+NIGHT_LAW[Math.min(e.n,3)]);
+      ticker(NIGHT_LAW[Math.min(e.n,3)]);
     }
     else if(e.t==="pai"){phase="pick";cur=null;render();if(e.n===3){dBark("到三更了。这一更,定今夜胜负。");if(window.OfferVoice)OfferVoice.play("voice_d_pai3");}}
     else if(e.t==="clash"){
@@ -3559,6 +3570,28 @@ else if(q.get("seat")==="death"){campaign.playerName="试玩者";campaign.reason
 
 </script>
 <script>
+/* v210 死神桌贴框器:桌面尺寸/位置/缩放全部跟随边框内窗 */
+(function(){
+  function fit(){
+    var f=document.getElementById("deathFrame"),felt=document.getElementById("dFelt");
+    if(!f||!felt||!felt.offsetParent)return;
+    var fr=f.getBoundingClientRect(); if(fr.height<80||fr.width<120)return;
+    var r0=felt.getBoundingClientRect();
+    var z=felt.offsetHeight?r0.height/felt.offsetHeight:1; if(!z||!isFinite(z))z=1;
+    var innerH=fr.height*0.58/z;
+    felt.style.boxSizing="border-box";
+    felt.style.height=innerH+"px"; felt.style.minHeight="0";
+    felt.style.paddingTop=(innerH*0.03)+"px"; felt.style.paddingBottom=(innerH*0.03)+"px";
+    felt.style.paddingLeft=felt.style.paddingRight=(fr.width*0.165/z)+"px";
+    felt.style.transform="none";
+    var me=felt.getBoundingClientRect();
+    var dy=((fr.top+fr.height/2)-(me.top+me.height/2))/(z||1);
+    felt.style.transform="translateY("+dy+"px)";
+    var k=Math.max(.5,Math.min(1,innerH/340));
+    felt.style.setProperty("--dk",k.toFixed(3));
+  }
+  setInterval(fit,500); window.addEventListener("resize",fit);
+})();
 /* v209 自动对中:文字板永远钉在画框正中(以真实渲染为准) */
 (function(){
   function align(){
